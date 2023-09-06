@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const MyApp = () => {
   // advice state
@@ -11,6 +11,9 @@ export const MyApp = () => {
     let data = await res.json();
     setAdvice(data.slip.advice);
   }
+  useEffect(function name(params) {
+    getAdvise();
+  }, []);
 
   return (
     <div>
@@ -25,7 +28,7 @@ export const MyApp = () => {
       </div>
       {/* Body */}
       <div className="bg-slate-300 h-screen flex justify-center items-center overflow-y-hidden font-serif">
-        <div className="container bg-emerald-900 max-w-screen-lg  p-3 m-4 rounded-md">
+        <div className="container bg-emerald-900 max-w-screen-lg  p-3 m-4 rounded-lg">
           <div className="flex flex-col gap-20">
             <div className="flex justify-center ">
               <button
@@ -37,7 +40,7 @@ export const MyApp = () => {
             </div>
 
             <div className="flex justify-center">
-              <p className="text-2xl mb-6 text-center max-w-md ">{advice}</p>
+              <p className="text-2xl mb-6 text-center max-w-md  ">{advice}</p>
             </div>
           </div>
         </div>
